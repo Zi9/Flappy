@@ -1,0 +1,141 @@
+[gd_scene load_steps=11 format=3 uid="uid://dtqlct3qxbmmd"]
+
+[ext_resource type="Script" path="res://FlappoBirdy.cs" id="1_c0kdp"]
+[ext_resource type="PackedScene" uid="uid://dmmh18b306a5i" path="res://Bird.tscn" id="1_gp2tk"]
+[ext_resource type="Texture2D" uid="uid://bgwc7x01gmpw0" path="res://bg.png" id="3_xa8tu"]
+[ext_resource type="AudioStream" uid="uid://nf3hb351ipnu" path="res://point.wav" id="4_3mwng"]
+[ext_resource type="AudioStream" uid="uid://bi4dhpysqvb8x" path="res://hitHurt.wav" id="5_hvsg2"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fnt0o"]
+a = Vector2(-40, 840)
+b = Vector2(480, 840)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fkpcn"]
+a = Vector2(-30, -54)
+b = Vector2(473, -54)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m6pci"]
+font_size = 40
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1b2i"]
+font_size = 40
+outline_size = 7
+outline_color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8e5km"]
+outline_size = 4
+outline_color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_c0kdp")
+
+[node name="BottomWall" type="Area2D" parent="." groups=["pipes"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+shape = SubResource("SegmentShape2D_fnt0o")
+
+[node name="TopWall" type="Area2D" parent="." groups=["pipes"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+shape = SubResource("SegmentShape2D_fkpcn")
+
+[node name="BG2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(804, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("3_xa8tu")
+centered = false
+
+[node name="BG1" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("3_xa8tu")
+centered = false
+
+[node name="PipeContainer" type="Node2D" parent="."]
+
+[node name="Bird" parent="." instance=ExtResource("1_gp2tk")]
+visible = false
+position = Vector2(57, 400)
+
+[node name="BirdStartPos" type="Marker2D" parent="."]
+position = Vector2(61, 400)
+
+[node name="PointSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3mwng")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hvsg2")
+
+[node name="Points" type="Label" parent="."]
+visible = false
+offset_right = 450.0
+offset_bottom = 180.0
+text = "0"
+label_settings = SubResource("LabelSettings_m6pci")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartScreen" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="StartScreen"]
+offset_right = 450.0
+offset_bottom = 280.0
+text = "Flappo Birdy"
+label_settings = SubResource("LabelSettings_a1b2i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="StartScreen"]
+offset_top = 643.0
+offset_right = 450.0
+offset_bottom = 790.0
+text = "Space to play"
+label_settings = SubResource("LabelSettings_a1b2i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="StartScreen"]
+offset_right = 450.0
+offset_bottom = 313.0
+text = "________________"
+label_settings = SubResource("LabelSettings_a1b2i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="StartScreen"]
+offset_right = 450.0
+offset_bottom = 417.0
+text = "A demo clone of the famous
+Flappy Bird game in Godot"
+label_settings = SubResource("LabelSettings_8e5km")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndScreen" type="Node2D" parent="."]
+visible = false
+
+[node name="Points" type="Label" parent="EndScreen"]
+offset_right = 450.0
+offset_bottom = 280.0
+text = "Game Over
+
+Your Score is"
+label_settings = SubResource("LabelSettings_a1b2i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="EndScreen"]
+offset_top = 643.0
+offset_right = 450.0
+offset_bottom = 790.0
+text = "Space to retry"
+label_settings = SubResource("LabelSettings_a1b2i")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="GainPoint" from="Bird" to="." method="GainPoint"]
+[connection signal="HitPipe" from="Bird" to="." method="EndGame"]
