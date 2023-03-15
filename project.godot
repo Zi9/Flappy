@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="flappy"
-run/main_scene="res://Game.tscn"
-config/features=PackedStringArray("4.0", "C#", "GL Compatibility")
+config/name="FlappoBirdy"
+run/main_scene="res://Scenes/Game.tscn"
+config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]

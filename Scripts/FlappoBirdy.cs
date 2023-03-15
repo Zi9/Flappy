@@ -37,7 +37,7 @@ public partial class FlappoBirdy : Node2D
         pointLabel = GetNode<Label>("Points");
         BG1 = GetNode<Sprite2D>("BG1");
         BG2 = GetNode<Sprite2D>("BG2");
-        pipescn = GD.Load<PackedScene>("res://Pipe.tscn");
+        pipescn = GD.Load<PackedScene>("res://Scenes/Pipe.tscn");
         CreatePipe();
         lastdeath = DateTime.MinValue;
     }

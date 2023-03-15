@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dtqlct3qxbmmd"]
+[gd_scene load_steps=11 format=3 uid="uid://lxk1rtdw1ujj"]
 
-[ext_resource type="Script" path="res://FlappoBirdy.cs" id="1_c0kdp"]
-[ext_resource type="PackedScene" uid="uid://dmmh18b306a5i" path="res://Bird.tscn" id="1_gp2tk"]
-[ext_resource type="Texture2D" uid="uid://bgwc7x01gmpw0" path="res://bg.png" id="3_xa8tu"]
-[ext_resource type="AudioStream" uid="uid://nf3hb351ipnu" path="res://point.wav" id="4_3mwng"]
-[ext_resource type="AudioStream" uid="uid://bi4dhpysqvb8x" path="res://hitHurt.wav" id="5_hvsg2"]
+[ext_resource type="PackedScene" uid="uid://dmmh18b306a5i" path="res://Scenes/Bird.tscn" id="1_gp2tk"]
+[ext_resource type="Script" path="res://Scripts/FlappoBirdy.cs" id="1_or1wu"]
+[ext_resource type="Texture2D" uid="uid://bgwc7x01gmpw0" path="res://Graphics/bg.png" id="2_n2mo3"]
+[ext_resource type="AudioStream" uid="uid://nf3hb351ipnu" path="res://Sounds/point.wav" id="4_so0l0"]
+[ext_resource type="AudioStream" uid="uid://bi4dhpysqvb8x" path="res://Sounds/hitHurt.wav" id="5_3m3bt"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_fnt0o"]
 a = Vector2(-40, 840)
@@ -30,7 +30,7 @@ outline_size = 4
 outline_color = Color(0.184314, 0.184314, 0.184314, 1)
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_c0kdp")
+script = ExtResource("1_or1wu")
 
 [node name="BottomWall" type="Area2D" parent="." groups=["pipes"]]
 
@@ -46,13 +46,13 @@ shape = SubResource("SegmentShape2D_fkpcn")
 texture_filter = 1
 position = Vector2(804, 0)
 scale = Vector2(3, 3)
-texture = ExtResource("3_xa8tu")
+texture = ExtResource("2_n2mo3")
 centered = false
 
 [node name="BG1" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3, 3)
-texture = ExtResource("3_xa8tu")
+texture = ExtResource("2_n2mo3")
 centered = false
 
 [node name="PipeContainer" type="Node2D" parent="."]
@@ -65,10 +65,10 @@ position = Vector2(57, 400)
 position = Vector2(61, 400)
 
 [node name="PointSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_3mwng")
+stream = ExtResource("4_so0l0")
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_hvsg2")
+stream = ExtResource("5_3m3bt")
 
 [node name="Points" type="Label" parent="."]
 visible = false

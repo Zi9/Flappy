@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmmh18b306a5i"]
 
-[ext_resource type="Script" path="res://Bird.cs" id="1_3vpse"]
-[ext_resource type="Texture2D" uid="uid://dgwdtvlybx4ob" path="res://bird.png" id="2_8mgfl"]
-[ext_resource type="AudioStream" uid="uid://b1mrtd4fov48k" path="res://jump.wav" id="3_qm6oh"]
+[ext_resource type="Script" path="res://Scripts/Bird.cs" id="1_3vpse"]
+[ext_resource type="Texture2D" uid="uid://dgwdtvlybx4ob" path="res://Graphics/bird.png" id="2_8mgfl"]
+[ext_resource type="AudioStream" uid="uid://b1mrtd4fov48k" path="res://Sounds/jump.wav" id="3_687tw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g1rv5"]
 radius = 14.5838
@@ -23,7 +23,7 @@ rotation = 0.958186
 shape = SubResource("CapsuleShape2D_g1rv5")
 
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_qm6oh")
+stream = ExtResource("3_687tw")
 volume_db = -9.369
 
 [connection signal="area_entered" from="." to="." method="OnEnterArea"]

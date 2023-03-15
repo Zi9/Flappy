@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6tlmfp75olpd"]
 
-[ext_resource type="Texture2D" uid="uid://c6k7p6xv3gl6s" path="res://pipe.png" id="1_ao6b2"]
-[ext_resource type="Script" path="res://Pipe.cs" id="1_vjt4u"]
+[ext_resource type="Script" path="res://Scripts/Pipe.cs" id="1_cqfep"]
+[ext_resource type="Texture2D" uid="uid://c6k7p6xv3gl6s" path="res://Graphics/pipe.png" id="2_n65vm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwhvu"]
 size = Vector2(90, 765)
@@ -11,7 +11,7 @@ a = Vector2(0, 150)
 b = Vector2(0, -150)
 
 [node name="Pipe" type="Node2D"]
-script = ExtResource("1_vjt4u")
+script = ExtResource("1_cqfep")
 
 [node name="PipeLower" type="Area2D" parent="." groups=["pipes"]]
 
@@ -19,7 +19,7 @@ script = ExtResource("1_vjt4u")
 texture_filter = 1
 position = Vector2(0, 381)
 scale = Vector2(3, 3)
-texture = ExtResource("1_ao6b2")
+texture = ExtResource("2_n65vm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PipeLower"]
 position = Vector2(0, 382.5)
@@ -32,7 +32,7 @@ rotation = 3.14159
 texture_filter = 1
 position = Vector2(0, 381)
 scale = Vector2(3, 3)
-texture = ExtResource("1_ao6b2")
+texture = ExtResource("2_n65vm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PipeUpper"]
 position = Vector2(0, 382.5)
